@@ -1,0 +1,117 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Uncomment below for local development (run: npx decap-server)
+# local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  # ─────────────────────────────────────────
+  # SITE SETTINGS
+  # ─────────────────────────────────────────
+  - name: "settings"
+    label: "⚙️ Site Instellingen"
+    files:
+      - name: "general"
+        label: "Algemene Instellingen"
+        file: "content/settings.json"
+        fields:
+          - { name: "site_name", label: "Website Naam", widget: "string", default: "Webdesigner Studio" }
+          - { name: "site_email", label: "E-mailadres", widget: "string", default: "info@webdesignerstudio.nl" }
+          - { name: "site_description", label: "Meta beschrijving", widget: "text", default: "Professioneel webdesign dat uw onderneming laat groeien." }
+          - { name: "footer_text", label: "Footer tekst", widget: "string", default: "© 2026 Webdesigner Studio. Alle rechten voorbehouden." }
+
+  # ─────────────────────────────────────────
+  # HERO SECTION
+  # ─────────────────────────────────────────
+  - name: "hero"
+    label: "🏠 Hero Sectie"
+    files:
+      - name: "hero"
+        label: "Hero Content"
+        file: "content/hero.json"
+        fields:
+          - { name: "eyebrow", label: "Subtitel boven titel", widget: "string", default: "Freelance Webdesigner" }
+          - { name: "title", label: "Hoofdtitel (HTML toegestaan)", widget: "text", default: "Uw website is het visitekaartje van uw onderneming." }
+          - { name: "description", label: "Beschrijving", widget: "text" }
+          - name: "stats"
+            label: "Statistieken"
+            widget: "list"
+            max: 3
+            fields:
+              - { name: "number", label: "Nummer", widget: "number" }
+              - { name: "suffix", label: "Achtervoegsel (bijv. %)", widget: "string", required: false }
+              - { name: "label", label: "Label", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # SERVICES
+  # ─────────────────────────────────────────
+  - name: "services"
+    label: "💼 Diensten"
+    files:
+      - name: "services"
+        label: "Diensten Content"
+        file: "content/services.json"
+        fields:
+          - { name: "section_label", label: "Sectie label", widget: "string", default: "Wat Ik Lever" }
+          - { name: "section_title", label: "Sectie titel", widget: "string", default: "Alles wat uw online aanwezigheid nodig heeft." }
+          - { name: "section_subtitle", label: "Sectie subtitel", widget: "text" }
+          - name: "items"
+            label: "Diensten"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Titel", widget: "string" }
+              - { name: "description", label: "Beschrijving", widget: "text" }
+              - { name: "icon", label: "Icoon (SVG path)", widget: "string", required: false }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                field:
+                  { name: "feature", label: "Feature", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # TESTIMONIALS
+  # ─────────────────────────────────────────
+  - name: "testimonials"
+    label: "⭐ Testimonials"
+    files:
+      - name: "testimonials"
+        label: "Testimonials Content"
+        file: "content/testimonials.json"
+        fields:
+          - { name: "section_label", label: "Sectie label", widget: "string", default: "Resultaten Die Spreken" }
+          - { name: "section_title", label: "Sectie titel", widget: "string" }
+          - { name: "section_subtitle", label: "Sectie subtitel", widget: "text" }
+          - name: "items"
+            label: "Testimonials"
+            widget: "list"
+            fields:
+              - { name: "quote", label: "Citaat", widget: "text" }
+              - { name: "name", label: "Naam", widget: "string" }
+              - { name: "role", label: "Functie & Bedrijf", widget: "string" }
+              - { name: "initials", label: "Initialen", widget: "string" }
+              - { name: "stars", label: "Aantal sterren", widget: "number", default: 5, min: 1, max: 5 }
+
+  # ─────────────────────────────────────────
+  # CTA / CONTACT
+  # ─────────────────────────────────────────
+  - name: "cta"
+    label: "📩 Contact Sectie"
+    files:
+      - name: "cta"
+        label: "Contact Content"
+        file: "content/cta.json"
+        fields:
+          - { name: "section_label", label: "Sectie label", widget: "string", default: "Vrijblijvend Kennismaken" }
+          - { name: "section_title", label: "Sectie titel", widget: "string" }
+          - { name: "section_subtitle", label: "Sectie subtitel", widget: "text" }
+          - { name: "form_title", label: "Formulier titel", widget: "string" }
+          - { name: "form_subtitle", label: "Formulier subtitel", widget: "string" }
+          - name: "benefits"
+            label: "Voordelen"
+            widget: "list"
+            field:
+              { name: "benefit", label: "Voordeel", widget: "string" }

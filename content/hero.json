@@ -1,0 +1,22 @@
+{
+    "eyebrow": "Freelance Webdesigner",
+    "title": "Uw website is het visitekaartje van uw onderneming.",
+    "description": "Ik ontwerp en bouw websites die niet alleen indruk maken, maar die bezoekers daadwerkelijk omzetten in klanten. Strategisch design, vlekkeloze techniek, meetbaar resultaat.",
+    "stats": [
+        {
+            "number": 150,
+            "suffix": "",
+            "label": "Projecten opgeleverd"
+        },
+        {
+            "number": 98,
+            "suffix": "%",
+            "label": "Tevreden klanten"
+        },
+        {
+            "number": 12,
+            "suffix": "",
+            "label": "Jaar ervaring"
+        }
+    ]
+}

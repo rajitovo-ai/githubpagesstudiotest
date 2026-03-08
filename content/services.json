@@ -1,0 +1,40 @@
+{
+    "section_label": "Wat Ik Lever",
+    "section_title": "Alles wat uw online aanwezigheid nodig heeft.",
+    "section_subtitle": "Van strategie tot lancering — ik neem het complete traject uit handen zodat u zich kunt richten op wat u het beste doet: ondernemen.",
+    "items": [
+        {
+            "title": "Strategisch Webdesign",
+            "description": "Geen template, maar een op maat ontworpen website die uw merkidentiteit versterkt en bezoekers doelgericht naar conversie leidt. Elk element heeft een functie.",
+            "icon": "monitor",
+            "features": [
+                "Custom UI/UX ontwerp",
+                "Merkconsistent design",
+                "Conversie-geoptimaliseerde layouts",
+                "Volledig responsive"
+            ]
+        },
+        {
+            "title": "SEO & Vindbaarheid",
+            "description": "Een prachtige website zonder bezoekers is een gemiste kans. Ik zorg ervoor dat uw doelgroep u vindt via Google — structureel en duurzaam.",
+            "icon": "search",
+            "features": [
+                "Technische SEO-optimalisatie",
+                "Zoekwoordstrategie",
+                "Lokale SEO (Google Mijn Bedrijf)",
+                "Content die ranking oplevert"
+            ]
+        },
+        {
+            "title": "Performance & Snelheid",
+            "description": "Snelheid is geen luxe, het is een vereiste. Ik bouw lichtgewicht websites die razendsnel laden — op elk apparaat, onder alle omstandigheden.",
+            "icon": "performance",
+            "features": [
+                "Core Web Vitals optimalisatie",
+                "Geoptimaliseerde laadtijden",
+                "Clean, onderhoudbare code",
+                "Hosting- & beveiligingsadvies"
+            ]
+        }
+    ]
+}
