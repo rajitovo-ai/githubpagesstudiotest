@@ -5,3 +5,9 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/forms/contact-success"
+  to = "/"
+  status = 200
+  force = false

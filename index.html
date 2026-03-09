@@ -126,7 +126,7 @@
         </div>
         <div class="reveal reveal--delay-1">
           <div class="premium-image">
-            <img src="assets/images/value-eyecatcher.png" alt="De waarde van een professionele website" loading="lazy">
+            <img src="assets/images/value-eyecatcher.svg" alt="De waarde van een professionele website" loading="lazy">
           </div>
         </div>
       </div>
@@ -219,7 +219,10 @@
             <p class="cta__form-subtitle" data-cms="form-description">Vul het formulier in, dan neem ik binnen 24 uur
               contact met u op.</p>
 
-            <form class="form" id="contactForm" novalidate>
+            <form class="form" id="contactForm" name="contact" method="POST" netlify novalidate netlify-honeypot="bot-field">
+              <!-- Honeypot field for spam prevention -->
+              <input type="hidden" name="bot-field">
+              
               <div class="form__group">
                 <label class="form__label" for="form-name">Naam</label>
                 <input class="form__input" type="text" id="form-name" name="name" placeholder="Uw volledige naam"

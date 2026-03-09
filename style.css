@@ -120,6 +120,19 @@ a:hover {
 }
 
 /* Layout Utilities */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
+
 .grid {
   display: grid;
   gap: var(--space-xl);
