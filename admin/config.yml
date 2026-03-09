@@ -19,10 +19,22 @@ collections:
         label: "Algemene Instellingen"
         file: "content/settings.json"
         fields:
-          - { name: "site_name", label: "Website Naam", widget: "string", default: "Webdesigner Studio" }
-          - { name: "site_email", label: "E-mailadres", widget: "string", default: "info@webdesignerstudio.nl" }
-          - { name: "site_description", label: "Meta beschrijving", widget: "text", default: "Professioneel webdesign dat uw onderneming laat groeien." }
-          - { name: "footer_text", label: "Footer tekst", widget: "string", default: "© 2026 Webdesigner Studio. Alle rechten voorbehouden." }
+          - name: "site_name"
+            label: "Website Naam"
+            widget: "string"
+            default: "Webdesigner Studio"
+          - name: "site_email"
+            label: "E-mailadres"
+            widget: "string"
+            default: "info@webdesignerstudio.nl"
+          - name: "site_description"
+            label: "Meta beschrijving"
+            widget: "text"
+            default: "Professioneel webdesign dat uw onderneming laat groeien."
+          - name: "footer_text"
+            label: "Footer tekst"
+            widget: "string"
+            default: "© 2026 Webdesigner Studio. Alle rechten voorbehouden."
 
   # ─────────────────────────────────────────
   # HERO SECTION
@@ -34,11 +46,25 @@ collections:
         label: "Hero Content"
         file: "content/hero.json"
         fields:
-          - { name: "eyebrow", label: "Subtitel boven titel", widget: "string", default: "Freelance Webdesigner" }
-          - { name: "title", label: "Hoofdtitel (HTML toegestaan)", widget: "string", default: "Uw website is het visitekaartje van uw onderneming." }
-          - { name: "description", label: "Beschrijving", widget: "text" }
-          - { name: "cta_primary_text", label: "Knop tekst (Primair)", widget: "string", default: "Plan een Adviesgesprek" }
-          - { name: "cta_secondary_text", label: "Knop tekst (Secundair)", widget: "string", default: "Bekijk Diensten" }
+          - name: "eyebrow"
+            label: "Subtitel boven titel"
+            widget: "string"
+            default: "Freelance Webdesigner"
+          - name: "title"
+            label: "Hoofdtitel (HTML toegestaan)"
+            widget: "string"
+            default: "Uw website is het visitekaartje van uw onderneming."
+          - name: "description"
+            label: "Beschrijving"
+            widget: "text"
+          - name: "cta_primary_text"
+            label: "Knop tekst (Primair)"
+            widget: "string"
+            default: "Plan een Adviesgesprek"
+          - name: "cta_secondary_text"
+            label: "Knop tekst (Secundair)"
+            widget: "string"
+            default: "Bekijk Diensten"
           - name: "stats"
             label: "Statistieken"
             widget: "list"
@@ -58,11 +84,19 @@ collections:
         label: "Probleem Content"
         file: "content/problem.json"
         fields:
-          - { name: "section_label", label: "Sectie label", widget: "string", default: "Waarom Nu Investeren" }
-          - { name: "section_title", label: "Sectie titel", widget: "string", default: "Een verouderde website kost u dagelijks klanten." }
-          - { name: "section_subtitle", label: "Sectie beschrijving", widget: "text" }
+          - name: "section_label"
+            label: "Sectie label"
+            widget: "string"
+            default: "Waarom Nu Investeren"
+          - name: "section_title"
+            label: "Sectie titel"
+            widget: "string"
+            default: "Een verouderde website kost u dagelijks klanten."
+          - name: "section_subtitle"
+            label: "Sectie beschrijving"
+            widget: "text"
           - name: "list_items"
-            label: "Punten (lijst)",
+            label: "Punten (lijst)"
             widget: "list"
             field: { name: "item", label: "Punt", widget: "string" }
           - name: "stats"
@@ -84,9 +118,17 @@ collections:
         label: "Diensten Content"
         file: "content/services.json"
         fields:
-          - { name: "section_label", label: "Sectie label", widget: "string", default: "Wat Ik Lever" }
-          - { name: "section_title", label: "Sectie titel", widget: "string", default: "Alles wat uw online aanwezigheid nodig heeft." }
-          - { name: "section_subtitle", label: "Sectie subtitel", widget: "text" }
+          - name: "section_label"
+            label: "Sectie label"
+            widget: "string"
+            default: "Wat Ik Lever"
+          - name: "section_title"
+            label: "Sectie titel"
+            widget: "string"
+            default: "Alles wat uw online aanwezigheid nodig heeft."
+          - name: "section_subtitle"
+            label: "Sectie subtitel"
+            widget: "text"
           - name: "items"
             label: "Diensten"
             widget: "list"
@@ -98,7 +140,9 @@ collections:
                 label: "Features"
                 widget: "list"
                 field:
-                  { name: "feature", label: "Feature", widget: "string" }
+                  name: "feature"
+                  label: "Feature"
+                  widget: "string"
 
   # ─────────────────────────────────────────
   # TESTIMONIALS
@@ -110,9 +154,16 @@ collections:
         label: "Testimonials Content"
         file: "content/testimonials.json"
         fields:
-          - { name: "section_label", label: "Sectie label", widget: "string", default: "Resultaten Die Spreken" }
-          - { name: "section_title", label: "Sectie titel", widget: "string" }
-          - { name: "section_subtitle", label: "Sectie subtitel", widget: "text" }
+          - name: "section_label"
+            label: "Sectie label"
+            widget: "string"
+            default: "Resultaten Die Spreken"
+          - name: "section_title"
+            label: "Sectie titel"
+            widget: "string"
+          - name: "section_subtitle"
+            label: "Sectie subtitel"
+            widget: "text"
           - name: "items"
             label: "Testimonials"
             widget: "list"
@@ -133,14 +184,30 @@ collections:
         label: "Contact Content"
         file: "content/cta.json"
         fields:
-          - { name: "section_label", label: "Sectie label", widget: "string", default: "Vrijblijvend Kennismaken" }
-          - { name: "section_title", label: "Sectie titel", widget: "string" }
-          - { name: "section_subtitle", label: "Sectie subtitel", widget: "text" }
-          - { name: "form_title", label: "Formulier titel", widget: "string" }
-          - { name: "form_subtitle", label: "Formulier subtitel", widget: "string" }
-          - { name: "form_submit_text", label: "Submit knop tekst", widget: "string", default: "Verstuur Aanvraag" }
+          - name: "section_label"
+            label: "Sectie label"
+            widget: "string"
+            default: "Vrijblijvend Kennismaken"
+          - name: "section_title"
+            label: "Sectie titel"
+            widget: "string"
+          - name: "section_subtitle"
+            label: "Sectie subtitel"
+            widget: "text"
+          - name: "form_title"
+            label: "Formulier titel"
+            widget: "string"
+          - name: "form_subtitle"
+            label: "Formulier subtitel"
+            widget: "string"
+          - name: "form_submit_text"
+            label: "Submit knop tekst"
+            widget: "string"
+            default: "Verstuur Aanvraag"
           - name: "benefits"
             label: "Voordelen"
             widget: "list"
             field:
-              { name: "benefit", label: "Voordeel", widget: "string" }
+              name: "benefit"
+              label: "Voordeel"
+              widget: "string"
