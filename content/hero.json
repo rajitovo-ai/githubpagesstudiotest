@@ -1,11 +1,12 @@
 {
     "eyebrow": "Freelance Webdesigner",
-    "title": "Uw website is het visitekaartje van uw onderneming.",
+    "title": "Uw website is het<br><em>visitekaartje</em> van<br>uw onderneming.",
     "description": "Ik ontwerp en bouw websites die niet alleen indruk maken, maar die bezoekers daadwerkelijk omzetten in klanten. Strategisch design, vlekkeloze techniek, meetbaar resultaat.",
+    "cta_primary_text": "Plan een Adviesgesprek",
+    "cta_secondary_text": "Bekijk Diensten",
     "stats": [
         {
             "number": 150,
-            "suffix": "",
             "label": "Projecten opgeleverd"
         },
         {
@@ -15,7 +16,6 @@
         },
         {
             "number": 12,
-            "suffix": "",
             "label": "Jaar ervaring"
         }
     ]

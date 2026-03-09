@@ -1,0 +1,33 @@
+{
+    "section_label": "Waarom Nu Investeren",
+    "section_title": "Een verouderde website<br>kost u dagelijks klanten.",
+    "section_subtitle": "In een digitale wereld vormen potentiële klanten binnen 0,05 seconde hun eerste indruk. Een trage, gedateerde website is niet slechts een gemiste kans — het is een actief obstakel voor uw groei.",
+    "list_items": [
+        "<strong>75% van de consumenten</strong> beoordeelt de geloofwaardigheid van een bedrijf op basis van het websitedesign.",
+        "<strong>53% van de bezoekers</strong> verlaat een website die langer dan 3 seconden laadt.",
+        "Ondernemingen met een geoptimaliseerde website genereren <strong>tot 3x meer leads</strong> dan hun concurrenten.",
+        "U bent <strong>24/7 bereikbaar</strong> — uw website verkoopt ook wanneer u dat niet doet."
+    ],
+    "stats": [
+        {
+            "label": "Zonder professionele website",
+            "value": "−67%",
+            "type": "negative"
+        },
+        {
+            "label": "Verloren leads per maand",
+            "value": "~340",
+            "type": "negative"
+        },
+        {
+            "label": "Met geoptimaliseerde website",
+            "value": "+215%",
+            "type": "positive"
+        },
+        {
+            "label": "Gemiddelde ROI na 6 maanden",
+            "value": "4.8×",
+            "type": "positive"
+        }
+    ]
+}

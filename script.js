@@ -49,48 +49,110 @@
     };
 
     /**
-     * Load hero section content from CMS JSON.
+     * Update an element's text content.
+     */
+    function updateElementText(selector, text) {
+        var el = document.querySelector(selector);
+        if (el && text !== undefined) el.textContent = text;
+    }
+
+    /**
+     * Update an element's inner HTML (use with caution).
+     */
+    function updateElementHTML(selector, html) {
+        var el = document.querySelector(selector);
+        if (el && html !== undefined) el.innerHTML = html;
+    }
+
+    /**
+     * Load hero section content.
      */
     async function loadHeroContent() {
         var data = await fetchContent('hero.json');
         if (!data) return;
 
-        var eyebrow = document.querySelector('[data-cms="hero-eyebrow"]');
-        if (eyebrow && data.eyebrow) eyebrow.textContent = data.eyebrow;
+        updateElementText('[data-cms="hero-eyebrow"]', data.eyebrow);
+        updateElementHTML('[data-cms="hero-title"]', data.title);
+        updateElementText('[data-cms="hero-description"]', data.description);
+        updateElementText('[data-cms="hero-cta-primary"]', data.cta_primary_text);
+        updateElementText('[data-cms="hero-cta-secondary"]', data.cta_secondary_text);
 
-        var description = document.querySelector('[data-cms="hero-description"]');
-        if (description && data.description) description.textContent = data.description;
-
-        // Update stats
         if (data.stats && data.stats.length) {
-            var statEls = document.querySelectorAll('.hero__stat');
-            data.stats.forEach(function (stat, index) {
-                if (statEls[index]) {
-                    var numEl = statEls[index].querySelector('.hero__stat-number');
-                    var labelEl = statEls[index].querySelector('.hero__stat-label');
-                    if (numEl) {
-                        numEl.setAttribute('data-count', stat.number);
-                        if (stat.suffix) numEl.setAttribute('data-suffix', stat.suffix);
-                        else numEl.removeAttribute('data-suffix');
-                    }
-                    if (labelEl) labelEl.textContent = stat.label;
-                }
-            });
+            var statsGrid = document.getElementById('heroStats');
+            if (statsGrid) {
+                statsGrid.innerHTML = '';
+                data.stats.forEach(function (stat) {
+                    var div = document.createElement('div');
+                    div.className = 'hero__stat';
+                    div.innerHTML =
+                        '<div class="hero__stat-number" data-count="' + stat.number + '"' +
+                        (stat.suffix ? ' data-suffix="' + stat.suffix + '"' : '') + '>0</div>' +
+                        '<div class="hero__stat-label">' + escapeHtml(stat.label) + '</div>';
+                    statsGrid.appendChild(div);
+                });
+                // Initialize counters for new elements
+                document.querySelectorAll('[data-count]').forEach(observeCounter);
+            }
         }
     }
 
     /**
-     * Load services content from CMS JSON and render cards.
+     * Load problem section content.
+     */
+    async function loadProblemContent() {
+        var data = await fetchContent('problem.json');
+        if (!data) return;
+
+        updateElementText('[data-cms="problem-label"]', data.section_label);
+        updateElementHTML('[data-cms="problem-title"]', data.section_title);
+        updateElementText('[data-cms="problem-description"]', data.section_subtitle);
+
+        if (data.list_items) {
+            var list = document.getElementById('problemList');
+            if (list) {
+                list.innerHTML = '';
+                data.list_items.forEach(function (item) {
+                    var li = document.createElement('li');
+                    li.innerHTML = item; // Allow HTML for bolding numbers
+                    list.appendChild(li);
+                });
+            }
+        }
+
+        if (data.stats) {
+            var statsContainer = document.getElementById('problemStats');
+            if (statsContainer) {
+                var html = '<div class="problem__card">';
+                data.stats.forEach(function (stat) {
+                    var typeClass = stat.type === 'positive' ? 'problem__stat-value--positive' : 'problem__stat-value--negative';
+                    html +=
+                        '<div class="problem__stat-row">' +
+                        '<span class="problem__stat-label">' + escapeHtml(stat.label) + '</span>' +
+                        '<span class="problem__stat-value ' + typeClass + '">' + escapeHtml(stat.value) + '</span>' +
+                        '</div>';
+                });
+                html += '</div>';
+                statsContainer.innerHTML = html;
+            }
+        }
+    }
+
+    /**
+     * Load services content.
      */
     async function loadServicesContent() {
         var data = await fetchContent('services.json');
-        if (!data || !data.items) return;
+        if (!data) return;
 
+        updateElementText('[data-cms="services-label"]', data.section_label);
+        updateElementHTML('[data-cms="services-title"]', data.section_title);
+        updateElementText('[data-cms="services-description"]', data.section_subtitle);
+
+        if (!data.items) return;
         var grid = document.getElementById('servicesGrid');
         if (!grid) return;
 
         grid.innerHTML = '';
-
         data.items.forEach(function (service, index) {
             var delayClass = index > 0 ? ' reveal--delay-' + index : '';
             var iconSvg = SERVICE_ICONS[service.icon] || SERVICE_ICONS.default;
@@ -115,22 +177,25 @@
             grid.appendChild(card);
         });
 
-        // Re-observe new elements for scroll reveal
         reobserveReveals();
     }
 
     /**
-     * Load testimonials content from CMS JSON and render cards.
+     * Load testimonials content.
      */
     async function loadTestimonialsContent() {
         var data = await fetchContent('testimonials.json');
-        if (!data || !data.items) return;
+        if (!data) return;
 
+        updateElementText('[data-cms="testimonials-label"]', data.section_label);
+        updateElementHTML('[data-cms="testimonials-title"]', data.section_title);
+        updateElementText('[data-cms="testimonials-description"]', data.section_subtitle);
+
+        if (!data.items) return;
         var grid = document.getElementById('testimonialsGrid');
         if (!grid) return;
 
         grid.innerHTML = '';
-
         data.items.forEach(function (testimonial, index) {
             var delayClass = index > 0 ? ' reveal--delay-' + index : '';
             var starsHtml = '';
@@ -158,6 +223,36 @@
     }
 
     /**
+     * Load CTA content.
+     */
+    async function loadCTAContent() {
+        var data = await fetchContent('cta.json');
+        if (!data) return;
+
+        updateElementText('[data-cms="cta-label"]', data.section_label);
+        updateElementHTML('[data-cms="cta-title"]', data.section_title);
+        updateElementText('[data-cms="cta-description"]', data.section_subtitle);
+        updateElementText('[data-cms="form-title"]', data.form_title);
+        updateElementText('[data-cms="form-description"]', data.form_subtitle);
+        updateElementText('[data-cms="form-submit-text"]', data.form_submit_text);
+
+        if (data.benefits) {
+            var list = document.getElementById('ctaBenefits');
+            if (list) {
+                list.innerHTML = '';
+                data.benefits.forEach(function (benefit) {
+                    var li = document.createElement('li');
+                    li.innerHTML =
+                        '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true">' +
+                        '<path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />' +
+                        '</svg>' + escapeHtml(benefit);
+                    list.appendChild(li);
+                });
+            }
+        }
+    }
+
+    /**
      * Load settings and update footer / meta.
      */
     async function loadSettings() {
@@ -172,12 +267,17 @@
             emailLink.href = 'mailto:' + data.site_email;
             emailLink.textContent = data.site_email;
         }
+
+        if (data.site_name) {
+            document.title = data.site_name + ' — ' + (data.site_description ? data.site_description.substring(0, 50) : 'Webdesign');
+        }
     }
 
     /**
      * Escape HTML special characters.
      */
     function escapeHtml(text) {
+        if (!text) return '';
         var div = document.createElement('div');
         div.appendChild(document.createTextNode(text));
         return div.innerHTML;
@@ -193,14 +293,75 @@
         });
     }
 
+    // ────────────────────────────────────────────
+    // ANIMATED COUNTER — Hero Stats
+    // ────────────────────────────────────────────
+    var counterObserver = null;
+
+    function animateCounter(el) {
+        var targetText = el.getAttribute('data-count');
+        if (!targetText) return;
+
+        var target = parseInt(targetText, 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var duration = 2000;
+        var startTime = performance.now();
+
+        function easeOutQuart(t) {
+            return 1 - Math.pow(1 - t, 4);
+        }
+
+        function update(currentTime) {
+            var elapsed = currentTime - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var easedProgress = easeOutQuart(progress);
+            var current = Math.floor(easedProgress * target);
+
+            el.textContent = current + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                el.textContent = target + suffix;
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    function observeCounter(el) {
+        if (counterObserver) {
+            counterObserver.observe(el);
+        } else {
+            // Fallback if no IntersectionObserver
+            el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
+        }
+    }
+
+    if ('IntersectionObserver' in window) {
+        counterObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+    }
+
     /**
      * Initialize all CMS content loading.
      */
     function initCMS() {
+        loadSettings();
         loadHeroContent();
+        loadProblemContent();
         loadServicesContent();
         loadTestimonialsContent();
-        loadSettings();
+        loadCTAContent();
     }
 
     // Load CMS content on DOM ready
@@ -297,61 +458,6 @@
         // Fallback: show all immediately
         revealElements.forEach(function (el) {
             el.classList.add('is-visible');
-        });
-    }
-
-    // ────────────────────────────────────────────
-    // ANIMATED COUNTER — Hero Stats
-    // ────────────────────────────────────────────
-    var counters = document.querySelectorAll('[data-count]');
-
-    function animateCounter(el) {
-        var target = parseInt(el.getAttribute('data-count'), 10);
-        var suffix = el.getAttribute('data-suffix') || '';
-        var duration = 2000;
-        var startTime = performance.now();
-
-        function easeOutQuart(t) {
-            return 1 - Math.pow(1 - t, 4);
-        }
-
-        function update(currentTime) {
-            var elapsed = currentTime - startTime;
-            var progress = Math.min(elapsed / duration, 1);
-            var easedProgress = easeOutQuart(progress);
-            var current = Math.floor(easedProgress * target);
-
-            el.textContent = current + suffix;
-
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            } else {
-                el.textContent = target + suffix;
-            }
-        }
-
-        requestAnimationFrame(update);
-    }
-
-    if ('IntersectionObserver' in window) {
-        var counterObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        counterObserver.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.5 }
-        );
-
-        counters.forEach(function (counter) {
-            counterObserver.observe(counter);
-        });
-    } else {
-        counters.forEach(function (el) {
-            el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
         });
     }
 
