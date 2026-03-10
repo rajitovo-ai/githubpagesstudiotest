@@ -521,12 +521,11 @@ a:hover {
 
 .hero__title em {
   font-style: normal;
-  display: inline;
+  display: block;
   background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent-light));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  word-spacing: 9999px;
 }
 
 
