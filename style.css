@@ -172,8 +172,10 @@ a:hover {
 }
 
 .premium-image.full-width {
-  width: 100%;
+  width: 80%;
+  max-width: 800px;
   max-height: 350px;
+  margin: 0 auto;
 }
 
 .premium-image img {
