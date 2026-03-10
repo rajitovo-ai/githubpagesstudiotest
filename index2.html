@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Pulse — Strategisch Webdesign & Online Groei</title>
+  <meta name="description"
+    content="Transformeer uw online aanwezigheid met strategisch webdesign. Wij bouwen websites die converteren, vindbaar zijn en uw merk versterken.">
+  <meta name="keywords"
+    content="webdesign, digital marketing, SEO, website laten maken, online presence, conversie optimalisatie">
+  <meta name="author" content="Digital Pulse">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Digital Pulse — Strategisch Webdesign & Online Groei">
+  <meta property="og:description"
+    content="Transformeer uw online aanwezigheid met strategisch webdesign dat resultaat levert.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+
+  <!-- Fonts - Different from original -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a1a2e'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' font-weight='bold' fill='%2300d4ff'>D</text></svg>">
+
+  <style>
+    /* Index2 Custom Styles - Modern & Bold */
+    :root {
+      --clr-primary: #1a1a2e;
+      --clr-accent: #00d4ff;
+      --clr-accent-secondary: #7c3aed;
+      --clr-bg-dark: #0f0f1a;
+      --clr-bg-card: rgba(26, 26, 46, 0.8);
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--clr-bg-dark);
+      color: #fff;
+    }
+
+    .nav {
+      background: rgba(15, 15, 26, 0.9);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav__logo {
+      color: #fff;
+    }
+
+    .nav__logo span {
+      color: var(--clr-accent);
+    }
+
+    .nav__link {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav__link:hover {
+      color: var(--clr-accent);
+    }
+
+    .nav__cta {
+      background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent-secondary));
+      color: #fff;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--clr-bg-dark) 0%, #1a1a2e 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(ellipse, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__title em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__eyebrow {
+      color: var(--clr-accent);
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero__description {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .btn--primary {
+      background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent-secondary));
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+    }
+
+    .btn--outline {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .btn--outline:hover {
+      border-color: var(--clr-accent);
+      color: var(--clr-accent);
+    }
+
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section__label {
+      color: var(--clr-accent);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .section__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .section__subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .glass {
+      background: var(--clr-bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .expertise-card {
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .expertise-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--clr-accent);
+    }
+
+    .expertise-card__icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .expertise-card__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .expertise-card__text {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--clr-bg-dark) 0%, #1a1a2e 100%);
+    }
+
+    .form__input,
+    .form__textarea {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    .form__input:focus,
+    .form__textarea:focus {
+      border-color: var(--clr-accent);
+      outline: none;
+    }
+
+    .form__label {
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .footer {
+      background: var(--clr-bg-dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer__copy,
+    .footer__link {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Animated background */
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--clr-bg-dark), transparent);
+    }
+
+    /* Grid pattern */
+    .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo" aria-label="Digital Pulse — Home">Digital<span>Pulse</span></a>
+
+      <div class="nav__overlay" id="navOverlay"></div>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#waarom" class="nav__link">Waarom Ons</a></li>
+        <li><a href="#diensten" class="nav__link">Diensten</a></li>
+        <li><a href="#contact" class="nav__cta">Gratis Consultatie</a></li>
+      </ul>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Menu openen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero section" id="hero">
+      <div class="hero__bg">
+        <div class="grid-pattern"></div>
+      </div>
+
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="hero__eyebrow reveal">Digital Strategy Agency</p>
+
+          <h1 class="hero__title reveal reveal--delay-1">
+            Transformeer uw<br>
+            <em>digitale impact</em><br>
+            met resultaat.
+          </h1>
+
+          <p class="hero__description reveal reveal--delay-2">
+            Wij bouwen digitale ervaringen die uw business laten groeien. 
+            Van strategie tot uitvoering — uw partner voor online succes.
+          </p>
+
+          <div class="hero__actions reveal reveal--delay-3">
+            <a href="#contact" class="btn btn--primary">
+              Start uw Project
+              <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a href="#diensten" class="btn btn--outline">Onze Diensten</a>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal reveal--delay-2">
+          <img src="assets/images/hero-eyecatcher.png" alt="Digital Strategy" width="600" height="600">
+        </div>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-indicator__mouse">
+          <div class="scroll-indicator__wheel"></div>
+        </div>
+        <span class="scroll-indicator__text">Scroll</span>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="section" id="waarom" style="background: #0f0f1a;">
+      <div class="container grid grid--2 align-center">
+        <div class="reveal">
+          <p class="section__label">Waarom Digital Pulse</p>
+          <h2 class="section__title">Meer dan alleen<br>een webbureau.</h2>
+          <div class="section__subtitle">
+            <p>Wij zijn uw strategische partner voor digitale groei. Elke beslissing is gebaseerd op data en gericht op resultaat.</p>
+            <ul class="value-list" style="margin-top: 2rem; list-style: none; padding: 0;">
+              <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+                <span style="color: var(--clr-accent); font-size: 1.2rem;">✦</span>
+                <div><strong style="color: #fff; display: block; margin-bottom: 0.25rem;">Data-gedreven aanpak</strong><span style="color: rgba(255,255,255,0.6);">Elke pixel wordt geoptimaliseerd op basis van conversiedata</span></div>
+              </li>
+              <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+                <span style="color: var(--clr-accent); font-size: 1.2rem;">✦</span>
+                <div><strong style="color: #fff; display: block; margin-bottom: 0.25rem;">Bewezen resultaten</strong><span style="color: rgba(255,255,255,0.6);">Gemiddeld 40% meer conversie na onze optimalisaties</span></div>
+              </li>
+              <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+                <span style="color: var(--clr-accent); font-size: 1.2rem;">✦</span>
+                <div><strong style="color: #fff; display: block; margin-bottom: 0.25rem;">Full-service</strong><span style="color: rgba(255,255,255,0.6);">Van design tot SEO, hosting en onderhoud</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="reveal reveal--delay-1">
+          <div class="premium-image">
+            <img src="assets/images/value-eyecatcher.svg" alt="Waarom Digital Pulse" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="diensten" style="background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%);">
+      <div class="container text-center mb-xl reveal">
+        <p class="section__label">Onze Diensten</p>
+        <h2 class="section__title">Complete digitale<br>oplossingen.</h2>
+      </div>
+
+      <div class="container grid grid--3 gap-lg">
+        <div class="expertise-card glass reveal">
+          <div class="expertise-card__icon">🎯</div>
+          <h3 class="expertise-card__title">Webdesign & Development</h3>
+          <p class="expertise-card__text">Maatwerk websites die opvallen en converteren. Modern, snel en volledig responsive.</p>
+        </div>
+        <div class="expertise-card glass reveal reveal--delay-1">
+          <div class="expertise-card__icon">📈</div>
+          <h3 class="expertise-card__title">SEO & Content</h3>
+          <p class="expertise-card__text">Word gevonden door uw ideale klanten met strategische SEO en waardevolle content.</p>
+        </div>
+        <div class="expertise-card glass reveal reveal--delay-2">
+          <div class="expertise-card__icon">🚀</div>
+          <h3 class="expertise-card__title">Digital Marketing</h3>
+          <p class="expertise-card__text">Gerichte campagnes die uw merk laten groeien en leads genereren.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section class="cta section" id="contact">
+      <div class="cta__bg-glow" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="cta__inner">
+          <div class="cta__content">
+            <p class="section__label reveal">Gratis Strategie Sessie</p>
+            <h2 class="section__title reveal reveal--delay-1">Laten we uw<br>groei versnellen.</h2>
+            <p class="section__subtitle reveal reveal--delay-2">
+              Plan een vrijblijvend gesprek waarin we uw uitdagingen bespreken en concrete oplossingen voorstellen.
+            </p>
+
+            <ul class="cta__benefits reveal reveal--delay-3" style="list-style: none; padding: 0; margin-top: 2rem;">
+              <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: rgba(255,255,255,0.8);">
+                <span style="color: var(--clr-accent);">✓</span> 30 minuten gratis consultatie
+              </li>
+              <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: rgba(255,255,255,0.8);">
+                <span style="color: var(--clr-accent);">✓</span> Concrete actiepunten
+              </li>
+              <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: rgba(255,255,255,0.8);">
+                <span style="color: var(--clr-accent);">✓</span> Vrijblijvend offerte
+              </li>
+            </ul>
+          </div>
+
+          <div class="cta__form-wrapper reveal reveal--delay-2">
+            <h3 class="cta__form-title" style="color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Plan uw gesprek</h3>
+            <p class="cta__form-subtitle" style="color: rgba(255,255,255,0.6); margin-bottom: 1.5rem;">Vul het formulier in, ik neem binnen 24 uur contact op.</p>
+
+            <form class="form" id="contactForm">
+              <div class="form__group">
+                <label class="form__label" for="form-name">Naam</label>
+                <input class="form__input" type="text" id="form-name" name="name" placeholder="Uw volledige naam" required>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="form-email">E-mailadres</label>
+                <input class="form__input" type="email" id="form-email" name="email" placeholder="uw@email.nl" required>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="form-company">Bedrijfsnaam</label>
+                <input class="form__input" type="text" id="form-company" name="company" placeholder="Uw bedrijfsnaam">
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="form-message">Waar kan ik u mee helpen?</label>
+                <textarea class="form__textarea" id="form-message" name="message" placeholder="Vertel kort iets over uw project..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary form__submit" style="width: 100%;">
+                Verstuur Aanvraag
+                <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+
+              <p class="form__note" style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1rem; text-align: center;">100% privé — uw gegevens worden nooit gedeeld.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">&copy; 2026 Digital Pulse. Alle rechten voorbehouden.</p>
+      <ul class="footer__links">
+        <li><a href="#" class="footer__link">Privacybeleid</a></li>
+        <li><a href="mailto:hello@digitalpulse.nl" class="footer__link">hello@digitalpulse.nl</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
