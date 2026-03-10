@@ -841,95 +841,6 @@ a:hover {
 }
 
 /* ============================================
-   TESTIMONIALS SECTION
-   ============================================ */
-.testimonials {
-  background: var(--clr-bg-secondary);
-}
-
-.testimonials__header {
-  text-align: center;
-  margin-bottom: var(--space-3xl);
-}
-
-.testimonials__header .section__subtitle {
-  margin: 0 auto;
-}
-
-.testimonials__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
-}
-
-.testimonial-card {
-  background: var(--clr-bg-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--clr-glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  display: flex;
-  flex-direction: column;
-  transition: all var(--transition-base);
-}
-
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
-}
-
-.testimonial-card__stars {
-  color: var(--clr-accent);
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  margin-bottom: var(--space-md);
-}
-
-.testimonial-card__quote {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--clr-text-secondary);
-  flex: 1;
-  margin-bottom: var(--space-lg);
-  font-style: italic;
-}
-
-.testimonial-card__author {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--clr-border-light);
-}
-
-.testimonial-card__avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--clr-accent-dark), var(--clr-accent));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--clr-bg-primary);
-  flex-shrink: 0;
-}
-
-.testimonial-card__name {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--clr-text-primary);
-}
-
-.testimonial-card__role {
-  font-size: 0.8rem;
-  color: var(--clr-text-muted);
-}
-
-/* ============================================
    CTA / CONTACT SECTION
    ============================================ */
 .cta {
@@ -1111,8 +1022,7 @@ a:hover {
    ============================================ */
 @media (max-width: 1024px) {
 
-  .services__grid,
-  .testimonials__grid {
+  .services__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1166,8 +1076,7 @@ a:hover {
     font-size: 1rem;
   }
 
-  .services__grid,
-  .testimonials__grid {
+  .services__grid {
     grid-template-columns: 1fr;
   }
 

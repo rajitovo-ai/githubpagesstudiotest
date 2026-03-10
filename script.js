@@ -181,48 +181,6 @@
     }
 
     /**
-     * Load testimonials content.
-     */
-    async function loadTestimonialsContent() {
-        var data = await fetchContent('testimonials.json');
-        if (!data) return;
-
-        updateElementText('[data-cms="testimonials-label"]', data.section_label);
-        updateElementHTML('[data-cms="testimonials-title"]', data.section_title);
-        updateElementText('[data-cms="testimonials-description"]', data.section_subtitle);
-
-        if (!data.items) return;
-        var grid = document.getElementById('testimonialsGrid');
-        if (!grid) return;
-
-        grid.innerHTML = '';
-        data.items.forEach(function (testimonial, index) {
-            var delayClass = index > 0 ? ' reveal--delay-' + index : '';
-            var starsHtml = '';
-            for (var i = 0; i < (testimonial.stars || 5); i++) {
-                starsHtml += '★';
-            }
-
-            var card = document.createElement('article');
-            card.className = 'testimonial-card reveal' + delayClass;
-            card.innerHTML =
-                '<div class="testimonial-card__stars">' + starsHtml + '</div>' +
-                '<blockquote class="testimonial-card__quote">"' + escapeHtml(testimonial.quote) + '"</blockquote>' +
-                '<div class="testimonial-card__author">' +
-                '<div class="testimonial-card__avatar">' + escapeHtml(testimonial.initials) + '</div>' +
-                '<div>' +
-                '<div class="testimonial-card__name">' + escapeHtml(testimonial.name) + '</div>' +
-                '<div class="testimonial-card__role">' + escapeHtml(testimonial.role) + '</div>' +
-                '</div>' +
-                '</div>';
-
-            grid.appendChild(card);
-        });
-
-        reobserveReveals();
-    }
-
-    /**
      * Load CTA content.
      */
     async function loadCTAContent() {
@@ -360,7 +318,6 @@
         loadHeroContent();
         loadProblemContent();
         loadServicesContent();
-        loadTestimonialsContent();
         loadCTAContent();
     }
 
