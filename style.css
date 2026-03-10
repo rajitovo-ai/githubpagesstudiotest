@@ -530,6 +530,7 @@ a:hover {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-top: -0.05em;
 }
 
 .hero__description {
