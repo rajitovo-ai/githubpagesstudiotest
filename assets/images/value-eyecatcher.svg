@@ -1,54 +1,81 @@
-<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
+<svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c8a45e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a8843d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#0a0e1a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#05070a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1f35;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.8" />
-      <stop offset="100%" style="stop-color:#f4d03f;stop-opacity:0.6" />
-    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15"/>
+    </filter>
   </defs>
-  
-  <rect width="600" height="600" fill="url(#bgGradient)"/>
-  
-  <!-- Subtle background glow -->
-  <circle cx="300" cy="300" r="250" fill="none" stroke="url(#accentGradient)" stroke-width="1" opacity="0.2"/>
-  <circle cx="300" cy="300" r="200" fill="none" stroke="url(#accentGradient)" stroke-width="1" opacity="0.15"/>
-  
-  <!-- Laptop/Monitor frame - minimalist -->
-  <g transform="translate(150, 120)">
+
+  <!-- Background -->
+  <rect width="600" height="500" fill="#faf9f7"/>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="80" r="60" fill="url(#grad1)" opacity="0.1"/>
+  <circle cx="520" cy="420" r="80" fill="url(#grad1)" opacity="0.08"/>
+
+  <!-- Laptop/Monitor Frame -->
+  <g filter="url(#shadow)">
     <!-- Screen -->
-    <rect x="0" y="0" width="300" height="200" rx="8" fill="none" stroke="#d4af37" stroke-width="2"/>
+    <rect x="80" y="60" width="440" height="280" rx="12" fill="#fff" stroke="url(#grad2)" stroke-width="2"/>
     
-    <!-- Subtle gradient inside screen -->
-    <rect x="4" y="4" width="292" height="192" rx="6" fill="#16273e" opacity="0.3"/>
+    <!-- Screen content - Website mockup -->
+    <rect x="95" y="75" width="410" height="250" fill="#f5f4f1" rx="8"/>
     
-    <!-- Thin stand -->
-    <rect x="140" y="210" width="20" height="80" fill="#d4af37" opacity="0.4"/>
+    <!-- Header bar -->
+    <rect x="95" y="75" width="410" height="35" fill="url(#grad1)" rx="8"/>
+    <circle cx="110" cy="92" r="4" fill="#fff" opacity="0.6"/>
+    <circle cx="125" cy="92" r="4" fill="#fff" opacity="0.6"/>
+    <circle cx="140" cy="92" r="4" fill="#fff" opacity="0.6"/>
     
-    <!-- Base -->
-    <rect x="80" y="290" width="140" height="8" rx="4" fill="#d4af37" opacity="0.3"/>
+    <!-- Content lines -->
+    <rect x="110" y="125" width="380" height="8" fill="#c8a45e" opacity="0.3" rx="4"/>
+    <rect x="110" y="145" width="350" height="6" fill="#1a1a1a" opacity="0.2" rx="3"/>
+    <rect x="110" y="160" width="360" height="6" fill="#1a1a1a" opacity="0.2" rx="3"/>
+    <rect x="110" y="175" width="340" height="6" fill="#1a1a1a" opacity="0.2" rx="3"/>
+    
+    <!-- Button -->
+    <rect x="110" y="205" width="120" height="35" fill="url(#grad1)" rx="6"/>
+    <text x="170" y="228" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">Meer Info</text>
   </g>
-  
-  <!-- Minimal design elements in screen -->
-  <g transform="translate(170, 160)" opacity="0.6">
-    <!-- Three horizontal lines representing content -->
-    <line x1="0" y1="20" x2="260" y2="20" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
-    <line x1="0" y1="45" x2="200" y2="45" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
-    <line x1="0" y1="70" x2="240" y2="70" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Laptop stand -->
+  <g>
+    <path d="M 150 340 L 120 380 L 480 380 L 450 340" fill="url(#grad2)" opacity="0.8"/>
+    <rect x="280" y="380" width="40" height="30" fill="url(#grad2)" opacity="0.6" rx="4"/>
   </g>
-  
-  <!-- Floating circles - representing growth/positive impact -->
-  <g opacity="0.3">
-    <circle cx="450" cy="150" r="30" fill="none" stroke="#d4af37" stroke-width="2"/>
-    <circle cx="420" cy="250" r="25" fill="none" stroke="#d4af37" stroke-width="2"/>
-    <circle cx="480" cy="350" r="35" fill="none" stroke="#d4af37" stroke-width="2"/>
+
+  <!-- Floating design elements -->
+  <g opacity="0.6">
+    <!-- Color palette -->
+    <circle cx="420" cy="420" r="12" fill="#c8a45e"/>
+    <circle cx="450" cy="410" r="12" fill="#0a0e1a"/>
+    <circle cx="480" cy="425" r="12" fill="#7d9a78"/>
+    
+    <!-- Design tools icons -->
+    <g transform="translate(80, 420)">
+      <rect width="20" height="20" fill="none" stroke="#c8a45e" stroke-width="2" rx="3"/>
+      <circle cx="10" cy="10" r="3" fill="#c8a45e"/>
+    </g>
   </g>
-  
-  <!-- Center accent circle -->
-  <circle cx="300" cy="300" r="40" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.4"/>
-  <circle cx="300" cy="300" r="30" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.3"/>
-  <circle cx="300" cy="300" r="5" fill="#d4af37" opacity="0.6"/>
+
+  <!-- Checkmarks for features -->
+  <g>
+    <!-- Checkmark 1 -->
+    <circle cx="320" cy="450" r="18" fill="#c8a45e" opacity="0.2"/>
+    <path d="M 315 450 L 318 453 L 325 446" stroke="#c8a45e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Checkmark 2 -->
+    <circle cx="380" cy="460" r="18" fill="#c8a45e" opacity="0.2"/>
+    <path d="M 375 460 L 378 463 L 385 456" stroke="#c8a45e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Text labels -->
+  <text x="300" y="495" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#1a1a1a" text-anchor="middle">Professioneel Webdesign</text>
 </svg>
