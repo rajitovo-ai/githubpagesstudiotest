@@ -523,15 +523,7 @@ a:hover {
   -webkit-text-fill-color: transparent;
 }
 
-.hero__title .title-accent {
-  font-style: normal;
-  display: block;
-  background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent-light));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-top: -0.05em;
-}
+
 
 .hero__description {
   font-size: clamp(1.1rem, 1.8vw, 1.3rem);
