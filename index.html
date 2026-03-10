@@ -46,8 +46,7 @@
       <div class="nav__overlay" id="navOverlay"></div>
 
       <ul class="nav__links" id="navLinks">
-        <li><a href="#probleem" class="nav__link">Waarom Nu</a></li>
-        <li><a href="#diensten" class="nav__link">Diensten</a></li>
+        <li><a href="#waarde" class="nav__link">Waarom Nu</a></li>
         <li><a href="#contact" class="nav__cta">Gratis Adviesgesprek</a></li>
       </ul>
 
@@ -182,7 +181,7 @@
               versnellen?</h2>
             <p class="section__subtitle reveal reveal--delay-2" data-cms="cta-description">
               In een kort adviesgesprek analyseer ik de huidige staat van uw online aanwezigheid en bespreek ik de
-              concrete mogelijkheden om uw website te laten werken voor uw bedrijf.
+              mogelijkheden om uw website te laten werken voor uw bedrijf.
             </p>
 
             <ul class="cta__benefits reveal reveal--delay-3" id="ctaBenefits">
@@ -229,7 +228,7 @@
                 </svg>
               </button>
 
-              <p class="form__note">100% privé — uw gegevens worden nooit gedeeld met derden.</p>
+              <p class="form__note"></p>
             </form>
           </div>
         </div>
@@ -244,26 +243,10 @@
     <div class="container footer__inner">
       <p class="footer__copy">&copy; 2026 Webdesigner Studio. Alle rechten voorbehouden.</p>
       <ul class="footer__links">
-        <li><a href="#" class="footer__link">Privacybeleid</a></li>
-        <li><a href="#" class="footer__link">Algemene Voorwaarden</a></li>
         <li><a href="mailto:info@webdesignerstudio.nl" class="footer__link">info@webdesignerstudio.nl</a></li>
       </ul>
     </div>
   </footer>
-
-  <!-- Netlify Identity Widget (for CMS login redirect) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", function (user) {
-        if (!user) {
-          window.netlifyIdentity.on("login", function () {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
 
   <script src="script.js"></script>
 </body>
