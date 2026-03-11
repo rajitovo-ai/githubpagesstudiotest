@@ -419,6 +419,23 @@ textarea:focus-visible {
   transform: translateY(-1px);
 }
 
+.nav__whatsapp {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #ffffff !important;
+  background: #1f9d57;
+  padding: 0.6rem 1.2rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background var(--transition-base), transform var(--transition-base);
+}
+
+.nav__whatsapp:hover {
+  background: #168a48;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
 /* Mobile nav toggle */
 .nav__toggle {
   display: none;
@@ -644,6 +661,19 @@ textarea:focus-visible {
   border-color: var(--clr-accent);
   color: var(--clr-accent);
   transform: translateY(-2px);
+}
+
+.btn--whatsapp {
+  background: #1f9d57;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn--whatsapp:hover {
+  background: #168a48;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(31, 157, 87, 0.25);
 }
 
 .btn__arrow {
@@ -1095,6 +1125,13 @@ textarea:focus-visible {
 
   .nav__link {
     font-size: 1rem;
+  }
+
+  .nav__whatsapp,
+  .nav__cta {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .services__grid {
