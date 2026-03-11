@@ -515,14 +515,14 @@ a:hover {
   font-family: var(--font-display);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 800;
-  line-height: 0.85;
+  line-height: 1.08;
   letter-spacing: -0.04em;
   margin-bottom: var(--space-lg);
   color: var(--clr-text-primary);
 }
 
 .hero__title br {
-  line-height: 0.5;
+  line-height: 1;
 }
 
 .hero__title em {
@@ -1254,7 +1254,7 @@ a:hover {
     /* Iets kleinere max-size voor betere leesbaarheid */
     font-size: clamp(2.5rem, 5vw, 4.5rem); 
     font-weight: 800;
-    line-height: 1.05;
+    line-height: 1.12;
     letter-spacing: -0.02em;
     margin-bottom: var(--space-md);
     color: var(--clr-text-primary);
