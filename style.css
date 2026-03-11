@@ -201,23 +201,6 @@ select:focus-visible,
   box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.16);
 }
 
-.skip-link {
-  position: absolute;
-  top: -48px;
-  left: 1rem;
-  z-index: 2000;
-  background: #ffffff;
-  color: #111317;
-  padding: 0.75rem 1rem;
-  border-radius: 999px;
-  font-weight: 600;
-  transition: top var(--transition-base);
-}
-
-.skip-link:focus-visible {
-  top: 1rem;
-}
-
 /* Simplified Section Styles */
 .section--value {
   padding: var(--space-3xl) 0;
