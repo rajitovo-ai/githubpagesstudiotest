@@ -471,7 +471,7 @@
     async function submitNetlifyForm(form) {
         var formData = new FormData(form);
         formData.append('form-name', form.getAttribute('name') || 'contact');
-        return fetch('/', {
+        return fetch(window.location.pathname, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData).toString(),
@@ -513,6 +513,11 @@
         try {
             var response = await submitNetlifyForm(contactForm);
             if (!response.ok) throw new Error('Form submit failed');
+
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.removeAttribute('aria-busy');
+            }
 
             // Show success state
             var formWrapper = contactForm.closest('.cta__form-wrapper');
