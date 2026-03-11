@@ -538,14 +538,14 @@ select:focus-visible,
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
   gap: clamp(2rem, 4vw, 3.25rem);
-  align-items: start;
+  align-items: center;
   position: relative;
   z-index: 1;
 }
 
 .hero__content {
   position: relative;
-  padding-top: 0.35rem;
+  padding-top: 0;
 }
 
 .hero__eyebrow {
@@ -597,7 +597,7 @@ select:focus-visible,
   position: relative;
   width: min(100%, 560px);
   justify-self: end;
-  align-self: start;
+  align-self: center;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
@@ -948,6 +948,9 @@ select:focus-visible,
 .cta__content {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cta__benefits {
@@ -1068,6 +1071,7 @@ select:focus-visible,
   margin-top: var(--space-lg);
   padding-top: var(--space-md);
   border-top: 1px solid var(--clr-border-light);
+  max-width: 440px;
 }
 
 .cta__alt-contact-title {
@@ -1258,7 +1262,16 @@ select:focus-visible,
     max-width: 520px;
     width: 100%;
     justify-self: center;
+    align-self: center;
     margin: 0 auto;
+  }
+
+  .cta__content {
+    justify-content: flex-start;
+  }
+
+  .cta__alt-contact {
+    max-width: none;
   }
 
   .scroll-indicator {
