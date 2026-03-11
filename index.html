@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webdesigner Studio — Professioneel Webdesign dat Converteert</title>
+  <title>Webdesigner Studio | Professioneel Webdesign dat Converteert</title>
   <meta name="description"
-    content="Professioneel webdesign dat uw onderneming laat groeien. Wij ontwerpen websites die bezoekers omzetten in klanten. Vraag een vrijblijvend adviesgesprek aan.">
+    content="Professioneel webdesign voor ondernemers die meer leads en klanten willen. Strategisch design, snelle websites en een vrijblijvend adviesgesprek.">
   <meta name="keywords"
     content="webdesign, webdesigner, freelance, website laten maken, SEO, website ontwerp, zakelijk webdesign">
   <meta name="author" content="Webdesigner Studio">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#05070a">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Webdesigner Studio — Professioneel Webdesign dat Converteert">
@@ -19,6 +20,12 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:image" content="assets/images/hero-eyecatcher.png">
+  <meta property="og:url" content="https://rajitovo-ai.github.io/githubpagesstudiotest/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Webdesigner Studio | Professioneel Webdesign dat Converteert">
+  <meta name="twitter:description" content="Strategisch webdesign voor ondernemers die bezoekers willen omzetten in klanten.">
+  <meta name="twitter:image" content="assets/images/hero-eyecatcher.png">
 
   <link rel="canonical" href="https://rajitovo-ai.github.io/githubpagesstudiotest/">
 
@@ -37,32 +44,68 @@
   <!-- Favicon (inline SVG as data URI) -->
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230a0e1a'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='20' font-weight='bold' fill='%23c8a45e'>W</text></svg>">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://rajitovo-ai.github.io/githubpagesstudiotest/#organization",
+          "name": "Webdesigner Studio",
+          "url": "https://rajitovo-ai.github.io/githubpagesstudiotest/",
+          "email": "info@webdesignerstudio.nl",
+          "telephone": "+34622056039",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+34622056039",
+            "contactType": "sales",
+            "availableLanguage": ["nl", "en"]
+          }
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://rajitovo-ai.github.io/githubpagesstudiotest/#localbusiness",
+          "name": "Webdesigner Studio",
+          "url": "https://rajitovo-ai.github.io/githubpagesstudiotest/",
+          "telephone": "+34622056039",
+          "email": "info@webdesignerstudio.nl",
+          "priceRange": "EUR",
+          "areaServed": ["Nederland", "Spanje"],
+          "description": "Freelance webdesign en strategische websites voor ondernemers die online willen groeien."
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main-content">Direct naar inhoud</a>
 
   <!-- ═══════════════════════════════════════
        NAVIGATION
        ═══════════════════════════════════════ -->
   <nav class="nav" id="nav">
     <div class="container nav__inner">
-      <a href="#" class="nav__logo" aria-label="Webdesigner Studio — Home">Webdesigner<span>Studio</span></a>
+      <a href="#hero" class="nav__logo" aria-label="Ga naar de hero-sectie van Webdesigner Studio">Webdesigner<span>Studio</span></a>
 
-      <div class="nav__overlay" id="navOverlay"></div>
+      <div class="nav__overlay" id="navOverlay" aria-hidden="true"></div>
 
       <ul class="nav__links" id="navLinks">
         <li><a href="#waarde" class="nav__link">Waarom Nu</a></li>
-        <li><a href="https://wa.me/34622056039" class="nav__whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Stuur een WhatsApp bericht naar +34 622 05 60 39">WhatsApp</a></li>
+        <li><a href="#expertise" class="nav__link">Diensten</a></li>
+        <li><a href="https://wa.me/34622056039?text=Hallo%2C%20ik%20wil%20graag%20een%20website%20laten%20maken." class="nav__whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Stuur een WhatsApp bericht naar +34 622 05 60 39">WhatsApp</a></li>
         <li><a href="#contact" class="nav__cta">Gratis Adviesgesprek</a></li>
       </ul>
 
-      <button class="nav__toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
     <!-- ═══════════════════════════════════════
          HERO
          ═══════════════════════════════════════ -->
@@ -199,9 +242,12 @@
             <p class="cta__form-subtitle" data-cms="form-description">Vul het formulier in, dan neem ik binnen 24 uur
               contact met u op.</p>
 
-            <form class="form" id="contactForm" name="contact" method="POST" netlify novalidate netlify-honeypot="bot-field">
+            <form class="form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify novalidate netlify-honeypot="bot-field">
               <!-- Honeypot field for spam prevention -->
-              <input type="hidden" name="bot-field">
+              <input type="hidden" name="form-name" value="contact">
+              <p class="form__hidden">
+                <label>Laat dit veld leeg als u een mens bent: <input name="bot-field"></label>
+              </p>
               
               <div class="form__group">
                 <label class="form__label" for="form-name">Naam</label>
@@ -233,13 +279,13 @@
                 </svg>
               </button>
 
-              <p class="form__note"></p>
+              <p class="form__note" role="status" aria-live="polite"></p>
             </form>
 
             <div class="cta__alt-contact" aria-label="Alternatieve contactoptie via WhatsApp">
               <p class="cta__alt-contact-title">Liever geen formulier invullen?</p>
               <p class="cta__alt-contact-text">Stuur direct een WhatsApp en ontvang snel een reactie.</p>
-              <a href="https://wa.me/34622056039" class="btn btn--whatsapp cta__alt-contact-btn" target="_blank" rel="noopener noreferrer" aria-label="Start een WhatsApp gesprek op +34 622 05 60 39">
+              <a href="https://wa.me/34622056039?text=Hallo%2C%20ik%20wil%20graag%20een%20website%20laten%20maken." class="btn btn--whatsapp cta__alt-contact-btn" target="_blank" rel="noopener noreferrer" aria-label="Start een WhatsApp gesprek op +34 622 05 60 39">
                 <span class="btn__label">Open WhatsApp: +34 622 05 60 39</span>
               </a>
             </div>

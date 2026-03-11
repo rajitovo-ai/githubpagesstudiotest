@@ -14,10 +14,17 @@
     const navLinks = document.getElementById('navLinks');
     const navOverlay = document.getElementById('navOverlay');
     const contactForm = document.getElementById('contactForm');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setNavToggleState(isOpen) {
+        if (!navToggle) return;
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        navToggle.setAttribute('aria-label', isOpen ? 'Menu sluiten' : 'Menu openen');
+    }
 
     if (navToggle) {
-        navToggle.setAttribute('aria-expanded', 'false');
         navToggle.setAttribute('aria-controls', 'navLinks');
+        setNavToggleState(false);
     }
 
     // ────────────────────────────────────────────
@@ -357,7 +364,8 @@
     var lastScroll = 0;
     function handleScroll() {
         var scrollY = window.scrollY;
-        if (scrollY > 60) {
+        var scrollThreshold = window.innerWidth <= 480 ? 16 : 60;
+        if (scrollY > scrollThreshold) {
             nav.classList.add('is-scrolled');
         } else {
             nav.classList.remove('is-scrolled');
@@ -373,7 +381,7 @@
         var isOpen = navLinks.classList.toggle('is-open');
         navToggle.classList.toggle('is-active', isOpen);
         navOverlay.classList.toggle('is-visible', isOpen);
-        navToggle.setAttribute('aria-expanded', String(isOpen));
+        setNavToggleState(isOpen);
         document.body.style.overflow = isOpen ? 'hidden' : '';
     }
 
@@ -381,7 +389,7 @@
         navLinks.classList.remove('is-open');
         navToggle.classList.remove('is-active');
         navOverlay.classList.remove('is-visible');
-        navToggle.setAttribute('aria-expanded', 'false');
+        setNavToggleState(false);
         document.body.style.overflow = '';
     }
 
@@ -417,7 +425,7 @@
                 var targetPos = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
                 window.scrollTo({
                     top: targetPos,
-                    behavior: 'smooth',
+                    behavior: prefersReducedMotion ? 'auto' : 'smooth',
                 });
             }
         });
