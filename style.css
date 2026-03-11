@@ -185,8 +185,16 @@ a:hover {
   display: block;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-  image-rendering: pixelated: none;
   filter: contrast(1.05) saturate(1.1);
+}
+
+/* Consistent keyboard focus styling */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--clr-accent-light);
+  outline-offset: 3px;
 }
 
 /* Simplified Section Styles */
@@ -1103,6 +1111,43 @@ a:hover {
     align-items: flex-start;
   }
 
+  .hero {
+    min-height: auto;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .hero__content {
+    text-align: left;
+  }
+
+  .hero__title {
+    max-width: none;
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    line-height: 1.14;
+  }
+
+  .hero__description {
+    max-width: none;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .hero__visual {
+    transform: none;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
   .btn {
     width: 100%;
     justify-content: center;
@@ -1237,42 +1282,10 @@ a:hover {
   color: var(--clr-text-muted);
 }
 
-/* 1. Verfijn de grid balans voor betere verhoudingen */
-.hero__grid {
-    display: grid;
-    /* 1fr 1fr zorgt voor een stabiele 50/50 balans */
-    grid-template-columns: 1fr 1fr; 
-    gap: var(--space-xl);
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
-
-/* 2. Maak de titel compacter en krachtiger */
-.hero__title {
-    font-family: var(--font-display);
-    /* Iets kleinere max-size voor betere leesbaarheid */
-    font-size: clamp(2.5rem, 5vw, 4.5rem); 
-    font-weight: 800;
-    line-height: 1.12;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--space-md);
-    color: var(--clr-text-primary);
-    max-width: 500px; /* Dwingt de tekst in een mooi blok */
-}
-
-/* 3. Zorg dat de beschrijving niet te ver uitwaaiert */
-.hero__description {
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
-    color: var(--clr-text-secondary);
-    max-width: 460px; /* Iets smaller voor een chiquere uitstraling */
-    line-height: 1.7;
-    margin-bottom: var(--space-lg);
-}
-
-/* 4. Zorg dat de knoppen goed uitgelijnd staan */
-.hero__actions {
-    display: flex;
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

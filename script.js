@@ -15,6 +15,11 @@
     const navOverlay = document.getElementById('navOverlay');
     const contactForm = document.getElementById('contactForm');
 
+    if (navToggle) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-controls', 'navLinks');
+    }
+
     // ────────────────────────────────────────────
     // CMS CONTENT LOADING
     // Loads JSON content from /content/ folder
@@ -65,6 +70,28 @@
     }
 
     /**
+     * Update button text without removing existing icon markup.
+     */
+    function updateButtonLabel(buttonSelector, text) {
+        if (text === undefined) return;
+        var button = document.querySelector(buttonSelector);
+        if (!button) return;
+
+        var label = button.querySelector('.btn__label');
+        if (!label) {
+            label = document.createElement('span');
+            label.className = 'btn__label';
+            var icon = button.querySelector('.btn__arrow');
+            if (icon) {
+                button.insertBefore(label, icon);
+            } else {
+                button.appendChild(label);
+            }
+        }
+        label.textContent = text;
+    }
+
+    /**
      * Load hero section content.
      */
     async function loadHeroContent() {
@@ -74,7 +101,7 @@
         updateElementText('[data-cms="hero-eyebrow"]', data.eyebrow);
         updateElementHTML('[data-cms="hero-title"]', data.title);
         updateElementText('[data-cms="hero-description"]', data.description);
-        updateElementText('[data-cms="hero-cta-primary"]', data.cta_primary_text);
+        updateButtonLabel('[data-cms="hero-cta-primary"]', data.cta_primary_text);
         updateElementText('[data-cms="hero-cta-secondary"]', data.cta_secondary_text);
 
         if (data.stats && data.stats.length) {
@@ -192,7 +219,7 @@
         updateElementText('[data-cms="cta-description"]', data.section_subtitle);
         updateElementText('[data-cms="form-title"]', data.form_title);
         updateElementText('[data-cms="form-description"]', data.form_subtitle);
-        updateElementText('[data-cms="form-submit-text"]', data.form_submit_text);
+        updateButtonLabel('[data-cms="form-submit-text"]', data.form_submit_text);
 
         if (data.benefits) {
             var list = document.getElementById('ctaBenefits');
@@ -346,6 +373,7 @@
         var isOpen = navLinks.classList.toggle('is-open');
         navToggle.classList.toggle('is-active', isOpen);
         navOverlay.classList.toggle('is-visible', isOpen);
+        navToggle.setAttribute('aria-expanded', String(isOpen));
         document.body.style.overflow = isOpen ? 'hidden' : '';
     }
 
@@ -353,16 +381,27 @@
         navLinks.classList.remove('is-open');
         navToggle.classList.remove('is-active');
         navOverlay.classList.remove('is-visible');
+        navToggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
     }
 
-    navToggle.addEventListener('click', toggleMobileNav);
-    navOverlay.addEventListener('click', closeMobileNav);
+    if (navToggle && navLinks && navOverlay) {
+        navToggle.addEventListener('click', toggleMobileNav);
+        navOverlay.addEventListener('click', closeMobileNav);
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && navLinks && navLinks.classList.contains('is-open')) {
+            closeMobileNav();
+        }
+    });
 
     // Close on nav link click
-    navLinks.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', closeMobileNav);
-    });
+    if (navLinks) {
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeMobileNav);
+        });
+    }
 
     // ────────────────────────────────────────────
     // SMOOTH SCROLLING (for anchor links)
@@ -421,7 +460,18 @@
     // ────────────────────────────────────────────
     // CONTACT FORM HANDLING
     // ────────────────────────────────────────────
-    contactForm.addEventListener('submit', function (e) {
+    async function submitNetlifyForm(form) {
+        var formData = new FormData(form);
+        formData.append('form-name', form.getAttribute('name') || 'contact');
+        return fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString(),
+        });
+    }
+
+    if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         // Basic validation
@@ -446,19 +496,41 @@
 
         if (!isValid) return;
 
-        // Show success state
-        var formWrapper = contactForm.closest('.cta__form-wrapper');
-        formWrapper.innerHTML =
-            '<div class="form--success">' +
-            '<div class="form--success__icon">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-            '<polyline points="20 6 9 17 4 12"/>' +
-            '</svg>' +
-            '</div>' +
-            '<h3 class="form--success__title">Bedankt voor uw aanvraag!</h3>' +
-            '<p class="form--success__text">Ik neem binnen 24 uur contact met u op om een moment in te plannen voor uw vrijblijvende adviesgesprek.</p>' +
-            '</div>';
+        var submitButton = document.getElementById('form-submit');
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.setAttribute('aria-busy', 'true');
+        }
+
+        try {
+            var response = await submitNetlifyForm(contactForm);
+            if (!response.ok) throw new Error('Form submit failed');
+
+            // Show success state
+            var formWrapper = contactForm.closest('.cta__form-wrapper');
+            formWrapper.innerHTML =
+                '<div class="form--success">' +
+                '<div class="form--success__icon">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                '<polyline points="20 6 9 17 4 12"/>' +
+                '</svg>' +
+                '</div>' +
+                '<h3 class="form--success__title">Bedankt voor uw aanvraag!</h3>' +
+                '<p class="form--success__text">Ik neem binnen 24 uur contact met u op om een moment in te plannen voor uw vrijblijvende adviesgesprek.</p>' +
+                '</div>';
+        } catch (error) {
+            var note = contactForm.querySelector('.form__note');
+            if (note) {
+                note.textContent = 'Versturen is niet gelukt. Probeer het opnieuw of mail naar info@webdesignerstudio.nl.';
+                note.style.color = '#e05252';
+            }
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.removeAttribute('aria-busy');
+            }
+        }
     });
+    }
 
     // Clear error styling on input
     document.querySelectorAll('.form__input, .form__textarea').forEach(function (field) {
