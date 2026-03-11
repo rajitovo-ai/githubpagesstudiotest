@@ -523,19 +523,19 @@ textarea:focus-visible {
   font-family: var(--font-display);
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.2;
   letter-spacing: -0.04em;
   margin-bottom: var(--space-lg);
   color: var(--clr-text-primary);
-}
-
-.hero__title br {
-  line-height: 1;
+  overflow: visible;
 }
 
 .hero__title em {
   font-style: normal;
   display: block;
+  /* padding prevents background-clip from cutting off ascenders/descenders */
+  padding: 0.06em 0.02em;
+  line-height: 1.2;
   background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent-light));
   background-clip: text;
   -webkit-background-clip: text;
@@ -1129,7 +1129,7 @@ textarea:focus-visible {
   .hero__title {
     max-width: none;
     font-size: clamp(2rem, 9vw, 2.8rem);
-    line-height: 1.14;
+    line-height: 1.2;
   }
 
   .hero__description {
